@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from db import npc, boss, bossevent
+from db import npc, boss, bossevent, monsters, items
 
 app = Flask(__name__) #cinit flask and store in object app
 
@@ -18,6 +18,17 @@ def _boss():
 def _bossevent():
     data = bossevent()
     return jsonify(data)
+
+@app.route('/MONSTERS')
+def _monsters():
+    data = monsters()
+    return jsonify(data)  
+
+@app.route('/ITEMS')
+def _items():
+    data = items()
+    return jsonify(data)  
+
 
 #if name is executing as principal file
 if __name__ == '__main__':
