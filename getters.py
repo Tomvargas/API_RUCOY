@@ -1,8 +1,8 @@
 import pymysql
-from keys import Host, User, Pass, Dbname
+import keys as k
 #---------------------------------------------------------------------- Data base conection script
 def db():
-    db = pymysql.connect(host=Host, user=User, password=Pass, database=Dbname)
+    db = pymysql.connect(host=k.Host, user=k.User, password=k.Pass, database=k.Dbname)
     return db
 
 #---------------------------------------------------------------------- Get npc json

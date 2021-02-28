@@ -1,13 +1,15 @@
 from flask import Flask, jsonify
-from db import npc, boss, bossevent, monsters, items
+from getters import npc, boss, bossevent, monsters, items
 
 app = Flask(__name__) #cinit flask and store in object app
 
-@app.route('/NPC')
-def _npc():
-    data = npc()
-    return jsonify(data)
+#-------------------------------------------------------- GET METHODS
 
+@app.route('/NPC') #create route
+#get function for NPC route
+def _npc():
+    data = npc() #list with dictionary data
+    return jsonify(data) #return list in json format
 
 @app.route('/BOSS')
 def _boss():
@@ -29,6 +31,7 @@ def _items():
     data = items()
     return jsonify(data)  
 
+#------------------------------------------------- END OF GET METHODS
 
 #if name is executing as principal file
 if __name__ == '__main__':
