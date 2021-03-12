@@ -136,7 +136,7 @@ def items():
     # Fetch all the rows in a list of lists.
     results = cursor.fetchall()
     for row in results:
-        dic = {"Category": row[1], "Name":row[2], "PriceRecomended":row[3], "Finditem": row[4], "srcImg":row[5]}
+        dic = {"Category": row[1], "Name":row[2], "Level required":row[3], "Price recomended": row[4], "Find item":row[5], "srcImg":row[6]}
         # Now add dic to list
         List.append(dic) 
 
