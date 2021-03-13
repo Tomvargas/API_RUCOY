@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from getters import npc, boss, bossevent, monsters, items
+from getters import npc, boss, bossevent, monsters, items, item, monster, bevent, bss
 from posters import postboss, postbossevent, postitem, postmonster, postnpc
 
 app = Flask(__name__) #cinit flask and store in object app
@@ -17,20 +17,52 @@ def _boss():
     data = boss()
     return jsonify(data)
 
+@app.route('/BOSS/<string:name>')
+def _bss(name):
+    data = bss(name)
+    if len(data) > 0:
+        return jsonify({"JEFE ENCONTRADO":data})
+    return ('JEFE NO ENCONTRADO')
+
 @app.route('/BOSSEVENT')
 def _bossevent():
     data = bossevent()
     return jsonify(data)
+
+@app.route('/BOSSEVENT/<string:name>')
+def _bosseventunit(name):
+    data = bevent(name)
+    if len(data) > 0:
+        return jsonify({"JEFE DE EVENTO ENCONTRADO":data})
+    return ('JEFE DE EVENTO NO ENCONTRADO')
 
 @app.route('/MONSTERS')
 def _monsters():
     data = monsters()
     return jsonify(data)  
 
+@app.route('/MONSTERS/<string:name>')
+def _monster(name):
+    data = monster(name)
+    if len(data) > 0:
+        return jsonify({"MONSTRUO ENCONTRADO":data})
+    return ('MONSTRUO NO ENCONTRADO')
+
+
 @app.route('/ITEMS')
 def _items():
     data = items()
     return jsonify(data)  
+
+
+@app.route('/ITEMS/<string:name>')
+def _item(name):
+    data = item(name)
+    if len(data) > 0:
+        return jsonify({"ITEM ENCONTRADO":data})
+    return ('ITEM NO ENCONTRADO')
+
+
 
 #------------------------------------------------- END OF GET METHODS
 
