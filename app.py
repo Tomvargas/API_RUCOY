@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from getters import npc, boss, bossevent, monsters, items, item, monster, bevent, bss
 from posters import postboss, postbossevent, postitem, postmonster, postnpc
+from delete import objdelete
 
 app = Flask(__name__) #cinit flask and store in object app
 
@@ -120,6 +121,14 @@ def _postmonster():
     return ('NO SE PUDO INGRESAR EL OBJETO') 
 
 #------------------------------------------------- END OF POST METHODS
+
+#------------------------------------------------- GLOBAL DELETE SPECIFIC OBJECT
+
+@app.route('/<string:subname>/<string:name>', methods=['DELETE'])
+def _objdelete(subname, name):
+    return (objdelete(subname, name))
+
+
 
 #if name is executing as principal file
 if __name__ == '__main__':
