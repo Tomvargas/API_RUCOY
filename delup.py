@@ -27,3 +27,28 @@ def objdelete(subname, name):
     except pymysql.connect.Error:
         return ('No se encontró este objeto')
 
+
+def objupdate(key, value, subname, idd):
+    
+    DB = db()
+    List = []
+    dic={}
+        
+    cursor = DB.cursor()
+
+    if value.isnumeric():
+        sql = "UPDATE "+subname.lower()+" SET "+key+" = "+value+" WHERE id = "+idd+";"
+    else:
+        sql = "UPDATE "+subname.lower()+" SET "+key+" = '"+value+"' WHERE id = "+idd+";"    
+
+    try:
+       cursor.execute(sql)
+       DB.commit()
+
+       cursor.close()
+       DB.close()
+       return ('El objeto se actualizó')
+
+    except pymysql.connect.Error:
+        return ('No se encontró este objeto')
+

@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from getters import npc, boss, bossevent, monsters, items, item, monster, bevent, bss
 from posters import postboss, postbossevent, postitem, postmonster, postnpc
-from delete import objdelete
+from delup import objdelete, objupdate
 
 app = Flask(__name__) #cinit flask and store in object app
 
@@ -128,7 +128,16 @@ def _postmonster():
 def _objdelete(subname, name):
     return (objdelete(subname, name))
 
+#------------------------------------------------- END OF GLOBAL DELETE SPECIFIC OBJECT
 
+#------------------------------------------------- GLOBAL UPDATE SPECIFIC OBJECT
+
+@app.route('/<string:subname>/<string:idd>', methods=['PUT'])
+def _objupdate(subname, idd):
+    dat = objupdate(request.json['value1'], request.json['value2'], subname, idd)
+    return jsonify(dat)
+
+#------------------------------------------------- END OF GLOBAL UPDATE SPECIFIC OBJECT
 
 #if name is executing as principal file
 if __name__ == '__main__':
