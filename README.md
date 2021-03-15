@@ -73,3 +73,28 @@ First you must write a json in your software using POST method, and write follow
     "srcimg": "img route"
 }
 ```
+
+### DELETE
+You can delete data with ```http://host/first_parameter/second_parameter```
+
+The first parameter for each object are ```NPC```, ```BOSS```, ```BOSSEVENT```, ```MONSTERS```, ```ITEMS```
+
+In second parameter you must write the name of the object like ```http://host/NPC/Gear Merchant```
+
+The API browse in table with the first parameter and delete all where name equalas to second parameter.
+
+### PUT
+You can update data with ```http://host/first_parameter/second_parameter```
+
+The first parameter for each object are ```NPC```, ```BOSS```, ```BOSSEVENT```, ```MONSTERS```, ```ITEMS```
+
+In second parameter you must write the id of the object like ```http://host/ITEMS/101```
+
+And the new data must be an json in your software, the struct are:
+#### GLOBAL STRUCT
+```json
+{
+    "value1": "Data base row name",
+    "value2": "value to be updated",
+}
+```
