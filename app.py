@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from getters import npc, boss, bossevent, monsters, items, item, monster, bevent, bss
+from getters import npc, boss, bossevent, monsters, items, item, monster, bevent, bss, npc1
 from posters import postboss, postbossevent, postitem, postmonster, postnpc
 from delup import objdelete, objupdate
 
@@ -12,6 +12,13 @@ app = Flask(__name__) #cinit flask and store in object app
 def _npc():
     data = npc() #list with dictionary data
     return jsonify(data) #return list in json format
+
+@app.route('/NPC/<string:name>')
+def _npc1(name):
+    data = npc1(name)
+    if len(data) > 0:
+        return jsonify({"NPC ENCONTRADO":data})
+    return ('NPC NO ENCONTRADO')
 
 @app.route('/BOSS')
 def _boss():

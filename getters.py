@@ -259,3 +259,31 @@ def monster(name):
     print(List)
 
     return List
+
+    #---------------------------------------------------------------------- Get an NPC json
+def npc1(name):
+    DB = db()
+    List = []
+
+    # prepare a cursor object using cursor() method
+    cursor = DB.cursor()
+
+    # Prepare SQL query to READ a record into the database.
+    sql = "SELECT * FROM npc where name = '"+name+"'"
+
+    # Execute the SQL command
+    cursor.execute(sql)
+
+    # Fetch all the rows in a list of lists.
+    results = cursor.fetchall()
+    for row in results:
+        dic = {"name": row[1], "ItemsID": row[2], "srcIMG": row[3]}
+        # Now add dic to list
+        List.append(dic) 
+
+    # disconnect from server
+    DB.close()
+
+    print(List)
+
+    return List
