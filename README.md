@@ -11,7 +11,7 @@ This API provide data of the following objects:
 * Boss Event
 * Items
 
-> ¡Alert this API is not online and data base works localy, please wait for release date!
+> ¡Alert¡, this API is not online and data base works localy, please wait for release date.
 
 ## HOW TO USE METHODS
 ### GET
